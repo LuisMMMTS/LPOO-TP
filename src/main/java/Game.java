@@ -3,6 +3,7 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.input.KeyStroke;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -27,6 +28,8 @@ public class Game {
     };
     public void run() throws IOException {
         this.draw();
+        KeyStroke key = screen.readInput();
+        processKey(key);
     };
 
     private void processKey(KeyStroke key){
