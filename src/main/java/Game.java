@@ -14,8 +14,7 @@ import static com.googlecode.lanterna.input.KeyType.ArrowRight;
 
 public class Game {
     private Screen screen;
-    private int x = 10;
-    private int y = 10;
+    private Hero hero=new Hero(10,10);
 
     public Game() throws IOException {
         Terminal terminal= new DefaultTerminalFactory().createTerminal();
@@ -27,7 +26,7 @@ public class Game {
 
     private void draw() throws IOException {
         screen.clear();
-        screen.setCharacter(x, y, new TextCharacter('X'));
+        screen.setCharacter(hero.getX(), hero.getY(), new TextCharacter('X'));
         screen.refresh();
     };
     public void run() throws IOException {
@@ -35,35 +34,36 @@ public class Game {
             this.draw();
             KeyStroke key = screen.readInput();
             if (processKey(key)){
+                screen.close();
                 break;
             }
         }
     };
 
-    private boolean processKey(KeyStroke key){
+    private boolean processKey(KeyStroke key) throws IOException {
         System.out.println(key);
         switch (key.getKeyType()) {
             case ArrowUp:
-                    this.y -= 1;
-                    break;
+                this.hero.moveUp();
+                break;
 
             case ArrowDown:
-                    this.y += 1;
-                    break;
+                this.hero.moveDown();
+                break;
 
             case ArrowLeft:
-                    this.x -= 1;
-                    break;
+                this.hero.moveLeft();
+                break;
 
             case ArrowRight:
-                    this.x += 1;
-                    break;
+                this.hero.moveRight();
+                break;
         }
 
         if (key.getKeyType() == Character && key.getCharacter() == 'q'){
             System.out.println("QUERES SAIR DESTE PROGRAMINHA LINDO????");
-            return true;
+            screen.close();
         }
-        return false;
+        return key.getKeyType() == KeyType.EOF;
     }
 }
