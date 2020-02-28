@@ -4,6 +4,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class Game {
@@ -27,4 +28,8 @@ public class Game {
     public void run() throws IOException {
         this.draw();
     };
+
+    private void processKey(KeyStroke key){
+        System.out.println(key);
+    }
 }
