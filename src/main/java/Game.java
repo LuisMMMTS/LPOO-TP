@@ -26,7 +26,7 @@ public class Game {
 
     private void draw() throws IOException {
         screen.clear();
-        screen.setCharacter(hero.getX(), hero.getY(), new TextCharacter('X'));
+        hero.draw(screen);
         screen.refresh();
     };
     public void run() throws IOException {
