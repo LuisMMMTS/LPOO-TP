@@ -1,4 +1,5 @@
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -7,6 +8,9 @@ import com.googlecode.lanterna.input.KeyStroke;
 
 import javax.swing.*;
 import java.io.IOException;
+
+import static com.googlecode.lanterna.input.KeyType.*;
+import static com.googlecode.lanterna.input.KeyType.ArrowRight;
 
 public class Game {
     private Screen screen;
@@ -27,12 +31,39 @@ public class Game {
         screen.refresh();
     };
     public void run() throws IOException {
-        this.draw();
-        KeyStroke key = screen.readInput();
-        processKey(key);
+        while (true) {
+            this.draw();
+            KeyStroke key = screen.readInput();
+            if (processKey(key)){
+                break;
+            }
+        }
     };
 
-    private void processKey(KeyStroke key){
+    private boolean processKey(KeyStroke key){
         System.out.println(key);
+        switch (key.getKeyType()) {
+            case ArrowUp:
+                    this.y -= 1;
+                    break;
+
+            case ArrowDown:
+                    this.y += 1;
+                    break;
+
+            case ArrowLeft:
+                    this.x -= 1;
+                    break;
+
+            case ArrowRight:
+                    this.x += 1;
+                    break;
+        }
+
+        if (key.getKeyType() == Character && key.getCharacter() == 'q'){
+            System.out.println("QUERES SAIR DESTE PROGRAMINHA LINDO????");
+            return true;
+        }
+        return false;
     }
 }
