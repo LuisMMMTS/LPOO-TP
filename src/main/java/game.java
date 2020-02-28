@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Game {
     private Screen screen;
 
-    public game() throws IOException {
+    public Game() throws IOException {
         terminal= new DefaultTerminalFactory().createTerminal();
         this.screen = new TerminalScreen(terminal);
     }
@@ -18,7 +18,7 @@ public class Game {
         screen.setCharacter(10, 10, new TextCharacter('X'));
         screen.refresh();
     };
-    public void run(){
+    public void run() throws IOException {
         this.draw();
     };
 }
