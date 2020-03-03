@@ -44,19 +44,19 @@ public class Game {
         System.out.println(key);
         switch (key.getKeyType()) {
             case ArrowUp:
-                this.hero.moveUp();
+                moveHero(hero.moveUp());
                 break;
 
             case ArrowDown:
-                this.hero.moveDown();
+                moveHero(hero.moveDown());
                 break;
 
             case ArrowLeft:
-                this.hero.moveLeft();
+                moveHero(hero.moveLeft());
                 break;
 
             case ArrowRight:
-                this.hero.moveRight();
+                moveHero(hero.moveRight());
                 break;
         }
 
@@ -65,5 +65,9 @@ public class Game {
             screen.close();
         }
         return key.getKeyType() == KeyType.EOF;
+    }
+
+    private void moveHero(Position position) {
+        hero.setPosition(position);
     }
 }
