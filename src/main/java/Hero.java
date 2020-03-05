@@ -3,7 +3,7 @@ import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
 
-public class Hero {
+public class Hero extends Element {
     private Position position;
     public Hero(int x, int y){
         this.position = new Position(x,y);
