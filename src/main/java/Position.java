@@ -5,6 +5,10 @@ public class Position {
         this.x = x;
         this.y = y;
     }
+    public Position(Walls wall){
+        this.x=wall.getX();
+        this.y=wall.getY();
+    }
 
     public int getX() {
         return x;

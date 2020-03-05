@@ -1,4 +1,5 @@
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
@@ -14,6 +15,7 @@ import static com.googlecode.lanterna.input.KeyType.ArrowRight;
 
 public class Game {
     private Screen screen;
+    public TextGraphics graphics = screen.newTextGraphics();
 
 
     public Game() throws IOException {
@@ -38,11 +40,23 @@ public class Game {
     };
 
     private boolean processKey(KeyStroke key){
-        arena.processKey(KeyStroke);
+        Arena.processKey(KeyStroke);
     }
 
 
     private void moveHero(Position position) {
-        hero.setPosition(position);
+        if (canHeroMove(position))
+            hero.setPosition(position);
+    }
+
+    private boolean canHeroMove(Position position) {
+        if (position.getX()>0 && position.getY()>0){
+            for (Walls wall : walls)
+                if (wall.getPosition().equals(position)){
+                    return false;
+                }
+            return true;
+        }
+        return false;
     }
 }
