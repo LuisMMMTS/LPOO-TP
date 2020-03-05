@@ -1,4 +1,4 @@
-public class Element {
+abstract class Element {
     private int x,y;
 
     Element(int x, int y){
@@ -6,7 +6,7 @@ public class Element {
         this.y=y;
     }
 
-    public void draw(){};
+    abstract void draw();
 
     public int getX() {
         return x;

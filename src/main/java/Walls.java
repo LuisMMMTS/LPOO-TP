@@ -1,4 +1,4 @@
-public class Walls {
+public class Walls extends Element {
     private int x,y;
 
     public Walls(int x,int y) {
