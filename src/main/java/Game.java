@@ -14,7 +14,7 @@ import static com.googlecode.lanterna.input.KeyType.ArrowRight;
 
 public class Game {
     private Screen screen;
-    private Hero hero=new Hero(10,10);
+
 
     public Game() throws IOException {
         Terminal terminal= new DefaultTerminalFactory().createTerminal();
@@ -24,11 +24,8 @@ public class Game {
         screen.doResizeIfNecessary();     // resize screen if necessary
     }
 
-    private void draw() throws IOException {
-        screen.clear();
-        hero.draw(screen);
-        screen.refresh();
-    };
+
+
     public void run() throws IOException {
         while (true) {
             this.draw();
@@ -40,32 +37,10 @@ public class Game {
         }
     };
 
-    private boolean processKey(KeyStroke key) throws IOException {
-        System.out.println(key);
-        switch (key.getKeyType()) {
-            case ArrowUp:
-                moveHero(hero.moveUp());
-                break;
-
-            case ArrowDown:
-                moveHero(hero.moveDown());
-                break;
-
-            case ArrowLeft:
-                moveHero(hero.moveLeft());
-                break;
-
-            case ArrowRight:
-                moveHero(hero.moveRight());
-                break;
-        }
-
-        if (key.getKeyType() == Character && key.getCharacter() == 'q'){
-            System.out.println("QUERES SAIR DESTE PROGRAMINHA LINDO????");
-            screen.close();
-        }
-        return key.getKeyType() == KeyType.EOF;
+    private boolean processKey(KeyStroke key){
+        arena.processKey(KeyStroke);
     }
+
 
     private void moveHero(Position position) {
         hero.setPosition(position);
