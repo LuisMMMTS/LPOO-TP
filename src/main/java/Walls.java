@@ -1,39 +1,48 @@
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
+
+import java.io.IOException;
+
 public class Walls extends Element {
-    private int x,y;
+    private Position position;
 
-    public Walls(int x,int y) {
-        this.x=x;
-        this.y=y;
+    Walls(int x, int y){
+        this.position = new Position(x,y);
     }
 
-    public boolean equals(Walls wall) {
-        if (this == wall) return true;
-
-        if (wall == null) return false;
-
-        if (this.getClass() != wall.getClass()) return false;
-
-        Position p = new Position (wall);       //ERA ASSIM QUE ERA SUPOSTO FAZER O CAST PARA POSIÇÃO, BASICAMENTE CRIAR UMA NOVA?? STATIC CAST DAVA ERRO
-        return this.x == p.getX() && this.y == p.getY();
+    Walls(Position position){
+        this.position=position;
     }
-
-
 
     public int getX() {
-        return x;
+        return position.getX();
     }
 
     public void setX(int x) {
-        this.x = x;
+        position.setX(x);
     }
 
     public int getY() {
-        return y;
+        return position.getY();
     }
 
     public void setY(int y) {
-        this.y = y;
+        position.setY(y);
     }
-}
 
+    public Position getPosition(){
+        return this.position;
+    }
+
+    public void setPosition(Position pos){
+        this.position=pos;
+    }
+
+    public void draw(TextGraphics graphics) throws IOException {
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFAA33"));
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), "W");
+    }
 }

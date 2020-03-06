@@ -1,3 +1,5 @@
+import com.googlecode.lanterna.graphics.TextGraphics;
+
 abstract class Element {
     private int x,y;
 
@@ -6,7 +8,7 @@ abstract class Element {
         this.y=y;
     }
 
-    abstract void draw();
+    abstract void draw(TextGraphics screen);
 
     public int getX() {
         return x;

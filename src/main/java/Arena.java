@@ -1,3 +1,6 @@
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
@@ -56,13 +59,30 @@ public class Arena {
         this.height = height;
     }
 
-    public void draw(Screen screen) throws IOException {
+    public void draw(TextGraphics screen) throws IOException {
         hero.draw(screen);
         for (Walls wall : walls)
-            wall.draw(graphics);
+            wall.draw(screen);
     }
 
-    private boolean processKey(KeyStroke key) throws IOException {
+    private void moveHero(Position position) {
+        if (canHeroMove(position))
+            hero.setPosition(position);
+    }
+
+    private boolean canHeroMove(Position position) {
+        if ((width >= position.getX()) && (height >= position.getY()) && (position.getX() >= 0) && (position.getY() >= 0)){
+            for (Walls wall : walls)
+                if (wall.getPosition().equals(position)){
+                    return false;
+                }
+            return true;
+        }
+        return false;
+    }
+
+
+    boolean processKey(KeyStroke key) throws IOException {
         System.out.println(key);
         switch (key.getKeyType()) {
             case ArrowUp:
