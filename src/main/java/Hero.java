@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class Hero extends Element {
     private Position position;
+    private int coins=0;
     public Hero(int x, int y){
         this.position = new Position(x,y);
     }
@@ -57,5 +58,13 @@ public class Hero extends Element {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(position.getX(), position.getY()), "X");
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
     }
 }

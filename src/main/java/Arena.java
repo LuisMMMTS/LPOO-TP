@@ -9,6 +9,7 @@ import com.googlecode.lanterna.screen.Screen;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static com.googlecode.lanterna.input.KeyType.Character;
 
@@ -17,12 +18,15 @@ public class Arena {
     private int height;
     private Hero hero=new Hero(10,10);
     private List<Walls> walls;
+    private List<Coin> coins;
 
 
     Arena(int width, int height) {
         this.width = width;
         this.height = height;
         this.walls = createWalls();
+        this.coins = creatCoins();
+
     }
 
     private List<Walls> createWalls() {
@@ -68,7 +72,9 @@ public class Arena {
     private void moveHero(Position position) {
         if (canHeroMove(position))
             hero.setPosition(position);
+            retrieveCoins(position);
     }
+
 
     private boolean canHeroMove(Position position) {
         if ((width >= position.getX()) && (height >= position.getY()) && (position.getX() >= 0) && (position.getY() >= 0)){
@@ -81,6 +87,23 @@ public class Arena {
         return false;
     }
 
+    private List<Coin> createCoins() {
+        Random random = new Random();
+        ArrayList<Coin> coins = new ArrayList<>();
+        for (int i = 0; i < 5; i++)
+            coins.add(new Coin(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1));
+        //TODO:make sure coins are not on top of hero and are not stacked one over another
+        return coins;
+    }
+
+    private void retrieveCoins(Position position) {
+        for (Coin coin : coins)
+            if (coin.getPosition().equals(position)){
+                coins.remove(coin);
+                hero.setCoins(hero.getCoins()+1);
+                break; //I can do this because there is only one coin in each position since i implemented that restriction
+            }
+    }
 
     boolean processKey(KeyStroke key) throws IOException {
         System.out.println(key);

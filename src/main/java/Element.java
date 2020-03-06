@@ -1,29 +1,32 @@
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 abstract class Element {
-    private int x,y;
+    private Position position;
 
     Element(int x, int y){
-        this.x=x;
-        this.y=y;
+        this.position=new Position(x,y);
+    }
+
+    Element(Position position){
+        this.position=position;
     }
 
     abstract void draw(TextGraphics screen);
 
     public int getX() {
-        return x;
+        return position.getX();
     }
 
     public void setX(int x) {
-        this.x = x;
+        this.position=new Position(x,this.position.getY());
     }
 
     public int getY() {
-        return y;
+        return position.getY();
     }
 
     public void setY(int y) {
-        this.y = y;
+        this.position=new Position(this.position.getX(),y);
     }
 }
 
