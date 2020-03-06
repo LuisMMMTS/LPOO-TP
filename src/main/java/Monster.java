@@ -4,7 +4,7 @@ public class Monster extends Element {
     private Position position;
 
     Monster(Position position){
-        this.position=position;
+        super(position);
     }
 
     private Position move(){

@@ -11,7 +11,7 @@ public class Hero extends Element {
     private Position position;
     private int coins=0;
     public Hero(int x, int y){
-        this.position = new Position(x,y);
+       super(x,y);
     }
 
     public int getX() {

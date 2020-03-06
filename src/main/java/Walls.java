@@ -13,7 +13,7 @@ public class Walls extends Element {
     }
 
     Walls(Position position){
-        this.position=position;
+        super(position);
     }
 
     public int getX() {
