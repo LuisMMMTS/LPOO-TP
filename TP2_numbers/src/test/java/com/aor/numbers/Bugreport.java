@@ -19,5 +19,6 @@ public class Bugreport {
         int max = aggregator.max();
 
         assertEquals(-1, max);
+        //Criar class stub
     }
 }
