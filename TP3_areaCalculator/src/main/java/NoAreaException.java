@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
-public class NoAreaException {
+public class NoAreaException extends Exception {
+    NoAreaException(){
+        super();
+    };
 }
