@@ -1,0 +1,1 @@
+Exercício 4 não percebi se era para implementar as interfaces que estavam no diagrama ou se era só as que diziam no texto e o diagrama era meramente representativo, fiquei um bocado baralhado com a aparição do AreaShape e de Line estar ligado a Shape em lugar de a BasicShape

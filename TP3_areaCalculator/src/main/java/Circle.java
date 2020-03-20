@@ -17,4 +17,9 @@ public class Circle implements Shape{
     public double getArea() {
         return Math.pow(this.radius,2)*Math.PI;
     }
+
+    @Override
+    public void draw() {
+        System.out.println("Circle");
+    }
 }

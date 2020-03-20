@@ -27,4 +27,9 @@ public class Elipse implements Shape {
     public double getArea() {
         return Math.PI * x_radius * y_radius;
     }
+
+    @Override
+    public void draw() {
+        System.out.println("Elipse");
+    }
 }

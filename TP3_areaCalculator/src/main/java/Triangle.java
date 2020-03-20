@@ -10,4 +10,9 @@ public class Triangle implements Shape {
     public double getArea() {
         return this.base*this.height/2;
     }
+
+    @Override
+    public void draw() {
+        System.out.println("Triangle");
+    }
 }

@@ -17,4 +17,9 @@ public class Square implements Shape {
     public double getArea() {
         return Math.pow(this.side,2);
     }
+
+    @Override
+    public void draw() {
+        System.out.println("Square");
+    }
 }
