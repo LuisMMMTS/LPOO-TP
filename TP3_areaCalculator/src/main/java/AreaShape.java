@@ -1,2 +1,2 @@
-public interface AreaShape {
+public interface AreaShape extends Shape, HasArea {
 }

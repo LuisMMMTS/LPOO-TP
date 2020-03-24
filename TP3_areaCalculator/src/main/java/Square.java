@@ -1,4 +1,4 @@
-public class Square implements Shape {
+public class Square implements AreaShape {
     private float side;
 
     Square(float side){
@@ -14,8 +14,8 @@ public class Square implements Shape {
     }
 
     @Override
-    public double getArea() {
-        return Math.pow(this.side,2);
+    public float getArea() {
+        return (float) Math.pow(this.side,2);
     }
 
     @Override

@@ -1,4 +1,4 @@
-public class Elipse implements Shape {
+public class Elipse implements AreaShape {
     private float x_radius;
     private float y_radius;
 
@@ -24,8 +24,8 @@ public class Elipse implements Shape {
     }
 
     @Override
-    public double getArea() {
-        return Math.PI * x_radius * y_radius;
+    public float getArea() {
+        return (float) (Math.PI * x_radius * y_radius);
     }
 
     @Override

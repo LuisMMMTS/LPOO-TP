@@ -1,4 +1,4 @@
-public class Triangle implements Shape {
+public class Triangle implements AreaShape {
     private float base, height;
 
     Triangle(float base, float height){
@@ -7,7 +7,7 @@ public class Triangle implements Shape {
     }
 
     @Override
-    public double getArea() {
+    public float getArea() {
         return this.base*this.height/2;
     }
 

@@ -1,4 +1,4 @@
-public class Circle implements Shape{
+public class Circle implements AreaShape{
     private float radius;
 
     Circle(float radius){
@@ -14,8 +14,8 @@ public class Circle implements Shape{
     }
 
     @Override
-    public double getArea() {
-        return Math.pow(this.radius,2)*Math.PI;
+    public float getArea() {
+        return (float) (Math.pow(this.radius,2)*Math.PI);
     }
 
     @Override

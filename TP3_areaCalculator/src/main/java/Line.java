@@ -1,4 +1,4 @@
-public class Line implements BasicShape {
+public class Line implements Shape {
     private float length;
 
     Line(float length){
@@ -6,5 +6,8 @@ public class Line implements BasicShape {
     }
 
 
-
+    @Override
+    public void draw() {
+        System.out.println("LINE");
+    }
 }
