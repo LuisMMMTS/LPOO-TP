@@ -1,12 +1,12 @@
 public class AreaXMLOutputter {
-    AreaAggregator area;
+    SumProvider sumProvider;
 
-    AreaXMLOutputter(AreaAggregator area){
-        this.area=area;
+    AreaXMLOutputter(SumProvider sumProvider){
+        this.sumProvider=sumProvider;
     }
 
     String output(){
-        return "<area>"+area.sum()+"</area>";
+        return "<area>"+sumProvider.sum()+"</area>";
     }
 
 }

@@ -1,3 +1,3 @@
 public interface HasArea {
-    float getArea();
+    double getArea();
 }

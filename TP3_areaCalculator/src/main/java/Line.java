@@ -1,7 +1,7 @@
 public class Line implements Shape {
-    private float length;
+    private double length;
 
-    Line(float length){
+    Line(double length){
         this.length=length;
     }
 

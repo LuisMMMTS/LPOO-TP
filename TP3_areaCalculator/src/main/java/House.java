@@ -6,8 +6,8 @@ public class House implements HasArea {
     }
 
     @Override
-    public float getArea() {
-        return (float) area;
+    public double getArea() {
+        return area;
     }
 
     public void setArea(double area) {

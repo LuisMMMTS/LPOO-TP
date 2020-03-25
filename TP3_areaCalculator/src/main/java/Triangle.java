@@ -1,13 +1,13 @@
 public class Triangle implements AreaShape {
-    private float base, height;
+    private double base, height;
 
-    Triangle(float base, float height){
+    Triangle(double base, double height){
         this.base=base;
         this.height=height;
     }
 
     @Override
-    public float getArea() {
+    public double getArea() {
         return this.base*this.height/2;
     }
 

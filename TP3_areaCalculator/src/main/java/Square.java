@@ -1,11 +1,11 @@
 public class Square implements AreaShape {
-    private float side;
+    private double side;
 
-    Square(float side){
+    Square(double side){
         this.side=side;
     }
 
-    public float getSide() {
+    public double getSide() {
         return side;
     }
 
@@ -14,8 +14,8 @@ public class Square implements AreaShape {
     }
 
     @Override
-    public float getArea() {
-        return (float) Math.pow(this.side,2);
+    public double getArea() {
+        return Math.pow(this.side,2);
     }
 
     @Override

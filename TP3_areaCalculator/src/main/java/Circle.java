@@ -1,21 +1,21 @@
 public class Circle implements AreaShape{
-    private float radius;
+    private double radius;
 
-    Circle(float radius){
+    Circle(double radius){
         this.radius=radius;
     }
 
-    public float getRadius() {
+    public double getRadius() {
         return radius;
     }
 
-    public void setRadius(float radius) {
+    public void setRadius(double radius) {
         this.radius = radius;
     }
 
     @Override
-    public float getArea() {
-        return (float) (Math.pow(this.radius,2)*Math.PI);
+    public double getArea() {
+        return Math.pow(this.radius,2)*Math.PI;
     }
 
     @Override
