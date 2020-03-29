@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS ALUNO;
+DROP TABLE IF EXISTS PROF;
+DROP TABLE IF EXISTS CADEIRA;
+DROP TABLE IF EXISTS PROVA;
+
+CREATE TABLE ALUNO(
+    nr int PRIMARY KEY,
+    nome TEXT
+);
+CREATE TABLE PROF(
+    sigla CHAR[3] PRIMARY KEY,
+    nome TEXT
+);
+CREATE TABLE CADEIRA(
+    cod CHAR[3] PRIMARY KEY,
+    design TEXT,
+    curso CHAR[2],
+    regente CHAR[3] REFERENCES PROF (sigla)
+);
+CREATE TABLE PROVA(
+    nr int REFERENCES ALUNO(nr),
+    cod CHAR[3] REFERENCES CADEIRA(cod),
+    data DATE,
+    nota int,
+    UNIQUE(cod,data),
+    PRIMARY KEY(nr,cod,data)
+);
