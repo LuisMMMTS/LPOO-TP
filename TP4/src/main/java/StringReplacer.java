@@ -10,4 +10,9 @@ public class StringReplacer implements StringTransformer{
     public void execute(StringDrink drink) {
         drink.setText(drink.getText().replace(old,replacer));
     }
+
+    @Override
+    public void undo(StringDrink drink) {
+        drink.setText(drink.getText().replace(replacer,old));
+    }
 }

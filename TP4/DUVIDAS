@@ -1,0 +1,6 @@
+para implementar o undo é suposto saber se algo falhou ao executar a operação execute? e nesse caso tenho de guardar o estado inicial antes da alteração certo? o sitio para guardar essa stack deverá ser na main porque os métodos não têm que ter responsabilidade ou têm?
+No caso do string replacer se tiver ("ABABAB") mudar tudo para b ao fazer undo não obtenho a original. como resolver? guardar o estado anterior no objeto, mas isso nao permitiria passar inumeras strings diferentes e o codigo perdia a sua utilidade
+
+estou com um erro no string recipe
+
+na smart strategy tmb n deveriamos guardar os bares num vetor, porque pode-se desejar diferentes bebidas para diferentes bares...talvez
