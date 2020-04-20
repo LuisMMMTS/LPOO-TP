@@ -4,3 +4,5 @@ No caso do string replacer se tiver ("ABABAB") mudar tudo para b ao fazer undo n
 estou com um erro no string recipe
 
 na smart strategy tmb n deveriamos guardar os bares num vetor, porque pode-se desejar diferentes bebidas para diferentes bares...talvez
+
+porque é que o strategy happy hour necessita de um string bar em lugar de simplesmente um bar?? não seria bom permitir que fosse qualquer tipo de bar?

@@ -5,7 +5,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class OrderingStrategyTest {
+public class AlienClientsTest {
     private StringRecipe getRecipe() {
         StringInverter si = new StringInverter();
         StringCaseChanger cc = new StringCaseChanger();
@@ -19,44 +19,27 @@ public class OrderingStrategyTest {
         StringRecipe recipe = new StringRecipe(transformers);
         return recipe;
     }
-
     @Test
-    public void impatientStrategy() {
+    public void ferengiAlreadyOpened() {
         StringBar stringBar = new StringBar();
         StringDrink drink = new StringDrink("AbCd-aBcD");
         StringRecipe recipe = getRecipe();
 
-        ImpatientStrategy strategy = new ImpatientStrategy();
-        HumanClient client = new HumanClient(strategy);
+        FerengiClient client = new FerengiClient();
 
         // Recipe is ordered immediately
-        client.wants(drink, recipe, stringBar);
-        assertEquals("dCbX-DcBa", drink.getText());
-    }
-
-    @Test
-    public void smartStrategyStartOpened() {
-        StringBar stringBar = new StringBar();
-        StringDrink drink = new StringDrink("AbCd-aBcD");
-        StringRecipe recipe = getRecipe();
-
-        SmartStrategy strategy = new SmartStrategy();
-        HumanClient client = new HumanClient(strategy);
-
-        // Recipe is ordered immediately as happy hour was already under way
         stringBar.startHappyHour();
         client.wants(drink, recipe, stringBar);
         assertEquals("dCbX-DcBa", drink.getText());
     }
 
     @Test
-    public void smartStrategyStartClosed() {
+    public void ferengiStartClosed() {
         StringBar stringBar = new StringBar();
         StringDrink drink = new StringDrink("AbCd-aBcD");
         StringRecipe recipe = getRecipe();
 
-        SmartStrategy strategy = new SmartStrategy();
-        HumanClient client = new HumanClient(strategy);
+        FerengiClient client = new FerengiClient();
         stringBar.addObserver(client); // this is important!
 
         client.wants(drink, recipe, stringBar);
@@ -64,6 +47,19 @@ public class OrderingStrategyTest {
 
         // Recipe is only ordered here
         stringBar.startHappyHour();
+        assertEquals("dCbX-DcBa", drink.getText());
+    }
+
+    @Test
+    public void romulan() {
+        StringBar stringBar = new StringBar();
+        StringDrink drink = new StringDrink("AbCd-aBcD");
+        StringRecipe recipe = getRecipe();
+
+        RomulanClient client = new RomulanClient();
+
+        // Recipe is ordered immediately
+        client.wants(drink, recipe, stringBar);
         assertEquals("dCbX-DcBa", drink.getText());
     }
 
