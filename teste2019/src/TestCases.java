@@ -110,7 +110,7 @@ public class TestCases {
 
 
 
-/*    @Test
+    @Test
     public void testTicket() throws InvalidTicket {
         Concert concert = new Concert("London", "UK", "2019/10/10");
         Concert nextDayConcert = new Concert("London", "UK", "2019/10/11");
@@ -122,12 +122,9 @@ public class TestCases {
         // isValid checks if ticket is for the correct concert
         assertTrue(concert.isValid(ticket));
         assertFalse(nextDayConcert.isValid(ticket));
-       // TODO:this asserfalse is not working
-
 
         fieldsArentPublic(Ticket.class);
     }
-*/
 
 
 
@@ -137,7 +134,6 @@ public class TestCases {
     public void testInvalidTicket() throws InvalidTicket {
         Concert concert = new Concert("London", "UK", "2019/10/10");
         Ticket ticket = new Ticket(-1, concert);
-        //TODO: throw invalidticket if numbre <1?
     }
 
 

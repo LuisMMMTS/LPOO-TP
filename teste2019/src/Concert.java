@@ -6,8 +6,9 @@ public class Concert {
     private String city;
     private String country;
     private String date;
-    private int lastTicketSoldId=0;
-    private List<Act> acts= new ArrayList<Act>();
+    private List<Act> acts = new ArrayList<Act>();
+    private List<Ticket> tickets = new ArrayList<Ticket>();
+    private int lastSold=0;
 
     public Concert(String city, String country, String date) {
         this.city = city;
@@ -39,16 +40,16 @@ public class Concert {
         this.date = date;
     }
 
+    public void addAct(Act act) {
+        this.acts.add(act);
+    }
+
     public List<Act> getActs() {
         return acts;
     }
 
     public void setActs(List<Act> acts) {
         this.acts = acts;
-    }
-
-    public void addAct(Act act){
-        this.acts.add(act);
     }
 
     @Override
@@ -67,34 +68,42 @@ public class Concert {
         return Objects.hash(city, country, date, acts);
     }
 
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
 
-    public boolean isValid(Ticket ticket) throws InvalidTicket {
-        if (ticket.getConcert().equals(this)) {
-            return true;
-        }
-        throw new InvalidTicket();
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
 
-        }
+    public void addTicket(Ticket ticket){
+        this.tickets.add(ticket);
+        this.lastSold=ticket.getNumber();
+    }
 
-    public boolean participates(Artist artist) {
-        for (Act act:this.acts){
-            if (act instanceof Band){
-                Band band= (Band) act;
-                if (band.containsArtist(artist)){
-                    return true;
-                }
-            }else if (artist.equals((Artist) act)){
+    public boolean isValid(Ticket ticket){
+        for (Ticket tick:this.tickets){
+            if (tick.equals(ticket)){
                 return true;
             }
         }
         return false;
     }
 
-    public int getLastTicketSoldId() {
-        return lastTicketSoldId;
+    public boolean participates(Artist artist) {
+        for (Act a:this.acts){
+            if (a.containsArtist(artist)){
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void setLastTicketSoldId(int lastTicketSoldId) {
-        this.lastTicketSoldId = lastTicketSoldId;
+    public int getLastSold() {
+        return lastSold;
+    }
+
+    public void setLastSold(int lastSold) {
+        this.lastSold = lastSold;
     }
 }
